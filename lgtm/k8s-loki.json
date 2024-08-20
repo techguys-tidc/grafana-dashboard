@@ -122,7 +122,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "count_over_time({cluster=\"$cluster\", namespace=~\"$namespace\", service_name=~\"$service_name\", pod=~\"$pod\"} |~ `(?i)$term`[$__auto])",
+          "expr": "count_over_time({cluster=\"$cluster\", namespace=~\"$namespace\", service_name=~\"$service_name\", pod=~\"$pod\"} |= `${term:raw}`[$__auto])",
           "legendFormat": "{{namespace}}:{{service_name}}:{{pod}}",
           "queryType": "range",
           "refId": "A",
@@ -235,7 +235,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "{cluster=\"$cluster\", namespace=~\"$namespace\", service_name=~\"$service_name\", pod=~\"$pod\"} |~ `(?i)$term`",
+          "expr": "{cluster=\"$cluster\", namespace=~\"$namespace\", service_name=~\"$service_name\", pod=~\"$pod\"} |= `${term:raw}`",
           "key": "Q-1415de3d-3c54-4837-b3eb-23a16e34079c-0",
           "queryType": "range",
           "refId": "A"
