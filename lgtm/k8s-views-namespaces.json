@@ -1829,7 +1829,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(kube_deployment_status_replicas_unavailable{namespace=~\"$namespace\", pod=~\"${created_by}.*\", cluster=\"$cluster\"}) by (deployment)",
+          "expr": "sum(kube_deployment_status_replicas_unavailable{namespace=~\"$namespace\", cluster=\"$cluster\"}) by (deployment)",
           "interval": "",
           "legendFormat": "{{ deployment }}",
           "range": true,
