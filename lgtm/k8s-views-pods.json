@@ -9,25 +9,25 @@
         "pluginName": "Prometheus"
       }
     ],
-    "__elements": [],
+    "__elements": {},
     "__requires": [
+      {
+        "type": "panel",
+        "id": "gauge",
+        "name": "Gauge",
+        "version": ""
+      },
       {
         "type": "grafana",
         "id": "grafana",
         "name": "Grafana",
-        "version": "8.3.4"
+        "version": "11.1.3"
       },
       {
         "type": "datasource",
         "id": "prometheus",
         "name": "Prometheus",
-        "version": "5.0.0"
-      },
-      {
-        "type": "panel",
-        "id": "timeseries",
-        "name": "Time series",
-        "version": ""
+        "version": "1.0.0"
       },
       {
         "type": "panel",
@@ -37,14 +37,14 @@
       },
       {
         "type": "panel",
-        "id": "gauge",
-        "name": "Gauge",
+        "id": "table",
+        "name": "Table",
         "version": ""
       },
       {
         "type": "panel",
-        "id": "table",
-        "name": "Table",
+        "id": "timeseries",
+        "name": "Time series",
         "version": ""
       }
     ],
@@ -74,6 +74,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 1,
+    "id": null,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -127,207 +128,9 @@
         },
         "gridPos": {
           "h": 2,
-          "w": 12,
-          "x": 0,
-          "y": 1
-        },
-        "id": 2,
-        "options": {
-          "colorMode": "none",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "name",
-          "wideLayout": true
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${datasource}"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "kube_pod_info{namespace=\"$namespace\", pod=\"$pod\", cluster=\"$cluster\"}",
-            "instant": true,
-            "interval": "",
-            "legendFormat": "{{ created_by_kind }}: {{ created_by_name }}",
-            "refId": "A"
-          }
-        ],
-        "title": "Created by",
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${datasource}"
-        },
-        "description": "Panel only works when a single pod is selected.",
-        "fieldConfig": {
-          "defaults": {
-            "links": [
-              {
-                "title": "",
-                "url": "/d/k8s_views_nodes/kubernetes-views-nodes?var-datasource=${datasource}&var-node=${__data.fields.node}"
-              }
-            ],
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "rgb(255, 255, 255)",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 2,
-          "w": 6,
-          "x": 12,
-          "y": 1
-        },
-        "id": 33,
-        "options": {
-          "colorMode": "none",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "name",
-          "wideLayout": true
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${datasource}"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "kube_pod_info{namespace=\"$namespace\", pod=\"$pod\", cluster=\"$cluster\"}",
-            "instant": true,
-            "interval": "",
-            "legendFormat": "{{ node }}",
-            "refId": "A"
-          }
-        ],
-        "title": "Running on",
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${datasource}"
-        },
-        "description": "Panel only works when a single pod is selected.",
-        "fieldConfig": {
-          "defaults": {
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "rgb(255, 255, 255)",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 2,
-          "w": 6,
-          "x": 18,
-          "y": 1
-        },
-        "id": 41,
-        "options": {
-          "colorMode": "none",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "mean"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showPercentChange": false,
-          "textMode": "name",
-          "wideLayout": true
-        },
-        "pluginVersion": "10.4.1",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "${datasource}"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "kube_pod_info{namespace=\"$namespace\", pod=\"$pod\", cluster=\"$cluster\"}",
-            "instant": true,
-            "interval": "",
-            "legendFormat": "{{ pod_ip }}",
-            "refId": "A"
-          }
-        ],
-        "title": "Pod IP",
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${datasource}"
-        },
-        "description": "Panel only works when a single pod is selected.",
-        "fieldConfig": {
-          "defaults": {
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "rgb(255, 255, 255)",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 2,
           "w": 5,
           "x": 0,
-          "y": 3
+          "y": 1
         },
         "id": 52,
         "options": {
@@ -335,6 +138,7 @@
           "graphMode": "none",
           "justifyMode": "auto",
           "orientation": "auto",
+          "percentChangeColorMode": "standard",
           "reduceOptions": {
             "calcs": [
               "mean"
@@ -346,7 +150,7 @@
           "textMode": "name",
           "wideLayout": true
         },
-        "pluginVersion": "10.4.1",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
@@ -355,7 +159,7 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "kube_pod_info{namespace=\"$namespace\", pod=\"$pod\", priority_class!=\"\", cluster=\"$cluster\"}",
+            "expr": "count(kube_pod_info{namespace=\"$namespace\", pod=~\"$pod\", priority_class!=\"\", cluster=\"$cluster\"})by(priority_class)",
             "format": "time_series",
             "instant": true,
             "interval": "",
@@ -427,7 +231,7 @@
           "h": 2,
           "w": 7,
           "x": 5,
-          "y": 3
+          "y": 1
         },
         "id": 53,
         "options": {
@@ -435,6 +239,7 @@
           "graphMode": "none",
           "justifyMode": "auto",
           "orientation": "auto",
+          "percentChangeColorMode": "standard",
           "reduceOptions": {
             "calcs": [],
             "fields": "",
@@ -444,7 +249,7 @@
           "textMode": "name",
           "wideLayout": true
         },
-        "pluginVersion": "10.4.1",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
@@ -491,9 +296,9 @@
         },
         "gridPos": {
           "h": 2,
-          "w": 6,
+          "w": 4,
           "x": 12,
-          "y": 3
+          "y": 1
         },
         "id": 56,
         "options": {
@@ -501,16 +306,17 @@
           "graphMode": "none",
           "justifyMode": "auto",
           "orientation": "auto",
+          "percentChangeColorMode": "standard",
           "reduceOptions": {
             "calcs": [],
             "fields": "",
             "values": false
           },
           "showPercentChange": false,
-          "textMode": "name",
+          "textMode": "value_and_name",
           "wideLayout": true
         },
-        "pluginVersion": "10.4.1",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
@@ -519,7 +325,7 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "kube_pod_container_status_last_terminated_reason{namespace=\"$namespace\", pod=\"$pod\", cluster=\"$cluster\"}",
+            "expr": "count(kube_pod_container_status_last_terminated_reason{namespace=\"$namespace\", pod=~\"$pod\", cluster=\"$cluster\"}) by(reason)",
             "instant": true,
             "interval": "",
             "legendFormat": "{{ reason }}",
@@ -563,7 +369,7 @@
           "h": 2,
           "w": 6,
           "x": 18,
-          "y": 3
+          "y": 1
         },
         "id": 57,
         "options": {
@@ -571,6 +377,7 @@
           "graphMode": "none",
           "justifyMode": "auto",
           "orientation": "auto",
+          "percentChangeColorMode": "standard",
           "reduceOptions": {
             "calcs": [],
             "fields": "",
@@ -580,7 +387,7 @@
           "textMode": "value",
           "wideLayout": true
         },
-        "pluginVersion": "10.4.1",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
@@ -589,7 +396,7 @@
             },
             "editorMode": "code",
             "exemplar": false,
-            "expr": "kube_pod_container_status_last_terminated_exitcode{namespace=\"$namespace\", pod=\"$pod\", cluster=\"$cluster\"}",
+            "expr": "kube_pod_container_status_last_terminated_exitcode{namespace=\"$namespace\", pod=~\"$pod\", cluster=\"$cluster\"}",
             "instant": true,
             "interval": "",
             "legendFormat": "__auto",
@@ -610,7 +417,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 5
+          "y": 3
         },
         "id": 47,
         "panels": [],
@@ -666,7 +473,7 @@
           "h": 8,
           "w": 3,
           "x": 0,
-          "y": 6
+          "y": 4
         },
         "id": 39,
         "options": {
@@ -684,7 +491,7 @@
           "showThresholdMarkers": true,
           "sizing": "auto"
         },
-        "pluginVersion": "10.4.1",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
@@ -739,7 +546,7 @@
           "h": 8,
           "w": 3,
           "x": 3,
-          "y": 6
+          "y": 4
         },
         "id": 48,
         "options": {
@@ -757,7 +564,7 @@
           "showThresholdMarkers": true,
           "sizing": "auto"
         },
-        "pluginVersion": "10.4.1",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
@@ -816,7 +623,7 @@
           "h": 8,
           "w": 3,
           "x": 6,
-          "y": 6
+          "y": 4
         },
         "id": 40,
         "options": {
@@ -834,7 +641,7 @@
           "showThresholdMarkers": true,
           "sizing": "auto"
         },
-        "pluginVersion": "10.4.1",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
@@ -889,7 +696,7 @@
           "h": 8,
           "w": 3,
           "x": 9,
-          "y": 6
+          "y": 4
         },
         "id": 49,
         "options": {
@@ -907,7 +714,7 @@
           "showThresholdMarkers": true,
           "sizing": "auto"
         },
-        "pluginVersion": "10.4.1",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
@@ -1010,7 +817,7 @@
           "h": 8,
           "w": 12,
           "x": 12,
-          "y": 6
+          "y": 4
         },
         "id": 38,
         "options": {
@@ -1026,7 +833,7 @@
           "showHeader": true,
           "sortBy": []
         },
-        "pluginVersion": "10.4.1",
+        "pluginVersion": "11.1.3",
         "targets": [
           {
             "datasource": {
@@ -1286,7 +1093,7 @@
           "h": 8,
           "w": 12,
           "x": 0,
-          "y": 14
+          "y": 12
         },
         "id": 50,
         "options": {
@@ -1414,7 +1221,7 @@
           "h": 8,
           "w": 12,
           "x": 12,
-          "y": 14
+          "y": 12
         },
         "id": 30,
         "options": {
@@ -1545,7 +1352,7 @@
           "h": 8,
           "w": 12,
           "x": 0,
-          "y": 22
+          "y": 20
         },
         "id": 29,
         "options": {
@@ -1651,7 +1458,7 @@
           "h": 8,
           "w": 12,
           "x": 12,
-          "y": 22
+          "y": 20
         },
         "id": 51,
         "options": {
@@ -1750,7 +1557,7 @@
                 }
               ]
             },
-            "unit": "s"
+            "unit": "percent"
           },
           "overrides": []
         },
@@ -1758,7 +1565,7 @@
           "h": 8,
           "w": 12,
           "x": 0,
-          "y": 30
+          "y": 28
         },
         "id": 59,
         "options": {
@@ -1788,14 +1595,14 @@
             },
             "editorMode": "code",
             "exemplar": true,
-            "expr": "sum(rate(container_cpu_cfs_throttled_seconds_total{namespace=~\"$namespace\", pod=~\"$pod\", image!=\"\", container!=\"\", cluster=\"$cluster\"}[$__rate_interval])) by (container)",
+            "expr": "sum(rate(container_cpu_cfs_throttled_seconds_total {namespace=~\"$namespace\", pod=~\"$pod\", image!=\"\", container!=\"\", cluster=\"$cluster\"}[$__rate_interval])) by (container)/sum(rate(container_cpu_usage_seconds_total {namespace=~\"$namespace\", pod=~\"$pod\", image!=\"\", container!=\"\", cluster=\"$cluster\"}[$__rate_interval])) by (container)",
             "interval": "$resolution",
             "legendFormat": "{{ container }}",
             "range": true,
             "refId": "A"
           }
         ],
-        "title": "CPU Throttled seconds by container",
+        "title": "CPU Throttled % by container",
         "type": "timeseries"
       },
       {
@@ -1804,7 +1611,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 38
+          "y": 36
         },
         "id": 62,
         "panels": [],
@@ -1893,7 +1700,7 @@
           "h": 8,
           "w": 12,
           "x": 0,
-          "y": 39
+          "y": 37
         },
         "id": 60,
         "options": {
@@ -1917,7 +1724,7 @@
             },
             "editorMode": "code",
             "exemplar": true,
-            "expr": "sum(increase(container_oom_events_total{namespace=\"${namespace}\", pod=\"${pod}\", container!=\"\", cluster=\"$cluster\"}[$__rate_interval])) by (container)",
+            "expr": "sum(increase(container_oom_events_total{namespace=\"${namespace}\", pod=~\"${pod}\", container!=\"\", cluster=\"$cluster\"}[$__rate_interval])) by (container)",
             "interval": "",
             "legendFormat": "{{ container }}",
             "range": true,
@@ -2009,7 +1816,7 @@
           "h": 8,
           "w": 12,
           "x": 12,
-          "y": 39
+          "y": 37
         },
         "id": 61,
         "options": {
@@ -2033,7 +1840,7 @@
             },
             "editorMode": "code",
             "exemplar": true,
-            "expr": "sum(increase(kube_pod_container_status_restarts_total{namespace=~\"${namespace}\", pod=\"${pod}\", container!=\"\", job=~\"$job\", cluster=\"$cluster\"}[$__rate_interval])) by (container)",
+            "expr": "sum(increase(kube_pod_container_status_restarts_total{namespace=~\"${namespace}\", pod=~\"${pod}\", container!=\"\", job=~\"$job\", cluster=\"$cluster\"}[$__rate_interval])) by (container)",
             "interval": "",
             "legendFormat": "{{ container }}",
             "range": true,
@@ -2053,7 +1860,7 @@
           "h": 1,
           "w": 24,
           "x": 0,
-          "y": 47
+          "y": 45
         },
         "id": 45,
         "panels": [],
@@ -2133,7 +1940,7 @@
           "h": 8,
           "w": 12,
           "x": 0,
-          "y": 48
+          "y": 46
         },
         "id": 31,
         "options": {
@@ -2240,7 +2047,7 @@
           "h": 8,
           "w": 12,
           "x": 12,
-          "y": 48
+          "y": 46
         },
         "id": 34,
         "options": {
@@ -2347,7 +2154,7 @@
           "h": 8,
           "w": 12,
           "x": 0,
-          "y": 56
+          "y": 54
         },
         "id": 36,
         "options": {
@@ -2454,7 +2261,7 @@
           "h": 8,
           "w": 12,
           "x": 12,
-          "y": 56
+          "y": 54
         },
         "id": 37,
         "options": {
@@ -2476,10 +2283,12 @@
               "type": "prometheus",
               "uid": "${datasource}"
             },
+            "editorMode": "code",
             "exemplar": true,
             "expr": "sum(rate(container_network_receive_errors_total{namespace=\"$namespace\", pod=~\"$pod\", cluster=\"$cluster\"}[$__rate_interval]))",
             "interval": "$resolution",
             "legendFormat": "Received",
+            "range": true,
             "refId": "A"
           },
           {
@@ -2507,11 +2316,7 @@
     "templating": {
       "list": [
         {
-          "current": {
-            "selected": false,
-            "text": "",
-            "value": ""
-          },
+          "current": {},
           "hide": 0,
           "includeAll": false,
           "multi": false,
@@ -2525,12 +2330,7 @@
           "type": "datasource"
         },
         {
-          "current": {
-            "isNone": true,
-            "selected": false,
-            "text": "None",
-            "value": ""
-          },
+          "current": {},
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
@@ -2553,11 +2353,7 @@
           "type": "query"
         },
         {
-          "current": {
-            "selected": false,
-            "text": "monitoring",
-            "value": "monitoring"
-          },
+          "current": {},
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
@@ -2582,11 +2378,7 @@
           "useTags": false
         },
         {
-          "current": {
-            "selected": false,
-            "text": "",
-            "value": ""
-          },
+          "current": {},
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
@@ -2694,6 +2486,6 @@
     "timezone": "",
     "title": "Kubernetes / Views / Pods",
     "uid": "k8s_views_pods",
-    "version": 28,
+    "version": 1,
     "weekStart": ""
   }
