@@ -378,7 +378,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(kube_daemonset_labels{namespace=~\"$namespace\", cluster=\"$cluster\"})",
+          "expr": "sum(count(kube_daemonset_status_number_ready{namespace=~\"$namespace\", cluster=\"$cluster\"})by(daemonset))",
           "interval": "",
           "legendFormat": "Daemonsets",
           "refId": "F"
@@ -398,7 +398,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(kube_hpa_labels{namespace=~\"$namespace\", cluster=\"$cluster\"})",
+          "expr": "sum(count(kube_horizontalpodautoscaler_status_current_replicas{namespace=~\"$namespace\", cluster=\"$cluster\"})by(horizontalpodautoscaler) )",
           "interval": "",
           "legendFormat": "Horizontal Pod Autoscalers",
           "refId": "H"
