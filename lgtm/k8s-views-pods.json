@@ -1595,7 +1595,7 @@
             },
             "editorMode": "code",
             "exemplar": true,
-            "expr": "sum(rate(container_cpu_cfs_throttled_seconds_total {namespace=~\"$namespace\", pod=~\"$pod\", image!=\"\", container!=\"\", cluster=\"$cluster\"}[$__rate_interval])) by (container)/sum(rate(container_cpu_usage_seconds_total {namespace=~\"$namespace\", pod=~\"$pod\", image!=\"\", container!=\"\", cluster=\"$cluster\"}[$__rate_interval])) by (container)",
+            "expr": "sum(rate(container_cpu_cfs_throttled_periods_total {namespace=~\"$namespace\", pod=~\"$pod\", image!=\"\", container!=\"\", cluster=\"$cluster\"}[$__rate_interval])) by (container)/sum(rate(container_cpu_cfs_periods_total {namespace=~\"$namespace\", pod=~\"$pod\", image!=\"\", container!=\"\", cluster=\"$cluster\"}[$__rate_interval])) by (container)",
             "interval": "$resolution",
             "legendFormat": "{{ container }}",
             "range": true,
